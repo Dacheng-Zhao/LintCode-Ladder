@@ -14,3 +14,4 @@ class Solution:
 test = Solution()
 print(test.strStr('source', 'sou'))
 print(test.strStr('source', 'tar'))
+print(test.strStr('source', 'rce'))
