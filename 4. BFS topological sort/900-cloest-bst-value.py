@@ -68,9 +68,50 @@ class Solution:
                 
         dfs(root, target)
         return self.node
-                
+
+
+
+      
         
+ """
+Definition of TreeNode:
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+"""
+
+class Solution:
+    """
+    @param root: the given BST
+    @param target: the given target
+    @return: the value in the BST that is closest to the target
+    """
+    def closestValue(self, root, target):
+       
         
+        if not root:
+            return None
+            
+        upper = root
+        lower = root
+        #BFS
+        while root:
+            if target > root.val:
+                lower = root
+                root = root.right
+            elif target < root.val:
+                upper = root
+                root = root.left
+            else:
+                return root.val
+        
+        if abs(target - lower.val) > abs(target - upper.val):
+            return upper.val
+        else:
+            return lower.val
+        
+               
         
         
         
