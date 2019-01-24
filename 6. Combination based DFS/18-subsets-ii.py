@@ -24,3 +24,20 @@ class Solution:
         
         DFS(nums, [], 0)
         return self.res
+
+
+   self.res = []
+        temp = []
+        nums.sort()
+        
+        def DFS(nums, temp, index):
+            self.res.append(temp[:])
+            for i in range(index, len(nums)):
+                if i != index and nums[i] == nums[i - 1]:
+                    continue
+                temp.append(nums[i])
+                DFS(nums, temp, i + 1)
+                temp.pop()
+                
+        DFS(nums, [], 0)
+        return self.res
