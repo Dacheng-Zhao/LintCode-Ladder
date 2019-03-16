@@ -45,4 +45,28 @@ class Solution:
                 if ([m] + p) not in l:
                     l.append([m] + p)
         return l
+
+
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return []
+        self.numsLen = len(nums)
+        self.res = []
+        nums.sort()
+        self.DFS(nums, [])
+        return self.res
+    
+    def DFS(self, remain, temp):
+        if len(temp) == self.numsLen:
+            self.res.append(temp[:])
+            
+        for i in range(len(remain)):
+            if i != 0 and remain[i] == remain[i - 1]:
+                continue
+            remaining = remain[:i] + remain[i + 1:]
+            temp.append(remain[i])
+            self.DFS(remaining, temp[:])
+            temp.pop()
+        
         
